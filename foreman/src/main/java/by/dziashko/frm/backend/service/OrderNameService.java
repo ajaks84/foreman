@@ -67,7 +67,7 @@ public class OrderNameService {
 
         if (sellerRepo.count() == 0) {
             sellerRepo.saveAll(
-                    Stream.of("Paweł", "Lukasz")
+                    Stream.of("Jacek", "Jan")
                             .map(Seller::new)
                             .collect(Collectors.toList()));
         }
@@ -77,7 +77,7 @@ public class OrderNameService {
         List<Seller> sellers = sellerRepo.findAll();
         OrderName orderName1 = new OrderName();
         orderName1.setSeller(sellers.get(r.nextInt(sellers.size())));
-        orderName1.setClient("GEA");
+        orderName1.setClient("Client 1");
         orderName1.setOrderNumber("134");
         orderName1.setOrderDate("11.09.2020");
         orderName1.setOrderDeadLine("11.12.2020");
@@ -86,7 +86,7 @@ public class OrderNameService {
         orderNameRepo.save(orderName1);
             OrderName orderName2 = new OrderName();
             orderName2.setSeller(sellers.get(r.nextInt(sellers.size())));
-            orderName2.setClient("Kongsberg");
+            orderName2.setClient("Client 2");
             orderName2.setOrderNumber("135");
             orderName2.setOrderDate("11.07.2020");
             orderName2.setOrderDeadLine("11.10.2021");
@@ -95,7 +95,7 @@ public class OrderNameService {
             orderNameRepo.save(orderName2);
             OrderName orderName3 = new OrderName();
             orderName3.setSeller(sellers.get(r.nextInt(sellers.size())));
-            orderName3.setClient("Venti");
+            orderName3.setClient("Client 3");
             orderName3.setOrderNumber("136");
             orderName3.setOrderDate("8.07.2020");
             orderName3.setOrderDeadLine("9.6.2021");

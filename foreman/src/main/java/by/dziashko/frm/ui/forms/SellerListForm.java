@@ -9,6 +9,7 @@ import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
+import com.vaadin.flow.component.textfield.IntegerField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.binder.ValidationException;
@@ -18,7 +19,7 @@ public class SellerListForm extends FormLayout {
 
     TextField name = new TextField("Name");
     TextField lastName = new TextField("Last name");
-    TextField phoneNumber = new TextField("tel.");
+    IntegerField phoneNumber = new IntegerField("tel.");
     Button save = new Button("Save");
     Button delete = new Button("Delete");
     Button close = new Button("Cancel");
@@ -28,6 +29,7 @@ public class SellerListForm extends FormLayout {
 
     public SellerListForm() {
         addClassName("contact-form");
+//        phoneNumber.s
 
         binder.bindInstanceFields(this);
         add(

@@ -13,7 +13,7 @@ public class Seller extends AbstractEntity implements Cloneable{
 
     private String lastName = "";
 
-    private String phoneNumber = "";
+    private Integer phoneNumber;
 
     @OneToMany(mappedBy = "seller", fetch = FetchType.EAGER)
     private List<OrderName> orderNames = new LinkedList<>();
@@ -44,11 +44,11 @@ public class Seller extends AbstractEntity implements Cloneable{
         this.lastName = lastName;
     }
 
-    public String getPhoneNumber() {
+    public Integer getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
+    public void setPhoneNumber(Integer phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 }

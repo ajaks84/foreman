@@ -79,7 +79,7 @@ import org.springframework.stereotype.Component;
         }
 
         private HorizontalLayout getToolbar() {
-            filterText.setPlaceholder("Filter by name...");
+            filterText.setPlaceholder("Filter by order name...");
             filterText.setClearButtonVisible(true);
             filterText.setValueChangeMode(ValueChangeMode.LAZY);
             filterText.addValueChangeListener(e -> updateList());

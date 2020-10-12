@@ -14,13 +14,7 @@ public interface OrderNameRepo extends JpaRepository<OrderName, Long> {
             "or lower(c.client) like lower(concat('%', :searchTerm, '%'))") //
     List<OrderName> search(@Param("searchTerm") String searchTerm);
 
-//    @Query("SELECT u FROM OrderName u WHERE u.orderDate = '%'11'%'")
-//    @Query("select c from OrderName c where c.orderReadiness = Ready, nativeQuery = true")
     List<OrderName> getByOrderReadiness(OrderName.Readiness ready);
-
-//    @Query(value ="select * from meal m where m.meal_type = ?1", nativeQuery = true)
-//    List<Meal> findMealByType(String mealType);
-
 
     OrderName getByOrderNumber(String orderNumber);
 }

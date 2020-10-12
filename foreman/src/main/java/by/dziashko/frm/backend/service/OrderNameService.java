@@ -45,6 +45,15 @@ public class OrderNameService {
         }
     }
 
+    public List<OrderName> filterReady(Boolean value) {
+        if (value == true) {
+            return orderNameRepo.getByOrderReadiness(OrderName.Readiness.Ready);
+        } else {
+            return orderNameRepo.findAll();
+        }
+    }
+
+
     public long count() {
         return orderNameRepo.count();
     }
@@ -82,7 +91,7 @@ public class OrderNameService {
         orderName1.setOrderDate("11.09.2020");
         orderName1.setOrderDeadLine("11.12.2020");
         orderName1.setOrderDelay("0");
-        orderName1.setOrderReadiness(OrderName.Readiness.NotReady);
+        orderName1.setOrderReadiness(OrderName.Readiness.Ready);
         orderNameRepo.save(orderName1);
             OrderName orderName2 = new OrderName();
             orderName2.setSeller(sellers.get(r.nextInt(sellers.size())));

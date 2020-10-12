@@ -7,6 +7,7 @@ import by.dziashko.frm.backend.service.SellerService;
 import by.dziashko.frm.ui.forms.OrderNameForm;
 import by.dziashko.frm.ui.views.main.MainView;
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.checkbox.Checkbox;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.Div;
@@ -33,6 +34,8 @@ import org.springframework.stereotype.Component;
         Grid<OrderName> grid = new Grid<>(OrderName.class);
         TextField filterText = new TextField();
         OrderNameForm form;
+        Checkbox checkbox = new Checkbox();
+
 
         public OrderNameView(OrderNameService orderNameService, SellerService sellerService) {
             this.sellerService  = sellerService;
@@ -87,9 +90,17 @@ import org.springframework.stereotype.Component;
             Button addContactButton = new Button("New Order");
             addContactButton.addClickListener(click -> addOrderName());
 
-            HorizontalLayout toolbar = new HorizontalLayout(filterText, addContactButton);
+            checkbox.setLabel("Only Ready Orders");
+            checkbox.setValue(false);
+            checkbox.addValueChangeListener(e -> filterList(e.getValue()));
+
+            HorizontalLayout toolbar = new HorizontalLayout(filterText, addContactButton,checkbox);
             toolbar.addClassName("toolbar");
             return toolbar;
+        }
+
+        private void filterList(Boolean value) {
+            grid.setItems(orderNameService.filterReady(value));
         }
 
         private void updateList() {
